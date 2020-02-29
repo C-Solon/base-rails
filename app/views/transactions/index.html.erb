@@ -1,0 +1,166 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all transactions
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new transaction
+    </h2>
+
+    <form action="/insert_transaction" method="post">
+      <div class="form-group">
+        <label for="portfolio_id_box">
+          Portfolio
+        </label>
+
+        <input type="text" id="portfolio_id_box" name="portfolio_id_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="transaction_type_box">
+          Transaction type
+        </label>
+
+        <input type="text" id="transaction_type_box" name="transaction_type_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="date_of_opening_box">
+          Date of opening
+        </label>
+
+        <input type="date" id="date_of_opening_box" name="date_of_opening_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="date_unwinded_box">
+          Date unwinded
+        </label>
+
+        <input type="date" id="date_unwinded_box" name="date_unwinded_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="quoted_entity_id_box">
+          Quoted entity
+        </label>
+
+        <input type="text" id="quoted_entity_id_box" name="quoted_entity_id_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="quantity_box">
+          Quantity
+        </label>
+
+        <input type="text" id="quantity_box" name="quantity_from_query" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create transaction
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Portfolio
+        </th>
+
+        <th>
+          Transaction type
+        </th>
+
+        <th>
+          Date of opening
+        </th>
+
+        <th>
+          Date unwinded
+        </th>
+
+        <th>
+          Quoted entity
+        </th>
+
+        <th>
+          Quantity
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @transactions.each do |transaction| %>
+      <tr>
+        <td>
+          <%= transaction.id %>
+        </td>
+
+        <td>
+          <%= transaction.portfolio_id %>
+        </td>
+
+        <td>
+          <%= transaction.transaction_type %>
+        </td>
+
+        <td>
+          <%= transaction.date_of_opening %>
+        </td>
+
+        <td>
+          <%= transaction.date_unwinded %>
+        </td>
+
+        <td>
+          <%= transaction.quoted_entity_id %>
+        </td>
+
+        <td>
+          <%= transaction.quantity %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(transaction.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(transaction.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/transactions/<%= transaction.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

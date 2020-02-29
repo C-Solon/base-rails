@@ -1,0 +1,146 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Transaction #<%= @transaction.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/transactions" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_transaction/<%= @transaction.id %>" class="btn btn-block btn-outline-secondary">
+          Delete transaction
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Portfolio
+      </dt>
+      <dd>
+        <%= @transaction.portfolio_id %>
+      </dd>
+
+      <dt>
+        Transaction type
+      </dt>
+      <dd>
+        <%= @transaction.transaction_type %>
+      </dd>
+
+      <dt>
+        Date of opening
+      </dt>
+      <dd>
+        <%= @transaction.date_of_opening %>
+      </dd>
+
+      <dt>
+        Date unwinded
+      </dt>
+      <dd>
+        <%= @transaction.date_unwinded %>
+      </dd>
+
+      <dt>
+        Quoted entity
+      </dt>
+      <dd>
+        <%= @transaction.quoted_entity_id %>
+      </dd>
+
+      <dt>
+        Quantity
+      </dt>
+      <dd>
+        <%= @transaction.quantity %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@transaction.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@transaction.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit transaction
+    </h2>
+
+    <form action="/modify_transaction/<%= @transaction.id %>"  method="post" >
+      <div class="form-group">
+        <label for="portfolio_id_box">
+          Portfolio
+        </label>
+
+        <input type="text" id="portfolio_id_box" name="portfolio_id_from_query" class="form-control" value="<%= @transaction.portfolio_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="transaction_type_box">
+          Transaction type
+        </label>
+
+        <input type="text" id="transaction_type_box" name="transaction_type_from_query" class="form-control" value="<%= @transaction.transaction_type %>">
+      </div>
+
+      <div class="form-group">
+        <label for="date_of_opening_box">
+          Date of opening
+        </label>
+
+        <input type="date" id="date_of_opening_box" name="date_of_opening_from_query" class="form-control" value="<%= @transaction.date_of_opening %>">
+      </div>
+
+      <div class="form-group">
+        <label for="date_unwinded_box">
+          Date unwinded
+        </label>
+
+        <input type="date" id="date_unwinded_box" name="date_unwinded_from_query" class="form-control" value="<%= @transaction.date_unwinded %>">
+      </div>
+
+      <div class="form-group">
+        <label for="quoted_entity_id_box">
+          Quoted entity
+        </label>
+
+        <input type="text" id="quoted_entity_id_box" name="quoted_entity_id_from_query" class="form-control" value="<%= @transaction.quoted_entity_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="quantity_box">
+          Quantity
+        </label>
+
+        <input type="text" id="quantity_box" name="quantity_from_query" class="form-control" value="<%= @transaction.quantity %>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update transaction
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

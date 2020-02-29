@@ -1,0 +1,71 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Portfolio #<%= @portfolio.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/portfolios" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_portfolio/<%= @portfolio.id %>" class="btn btn-block btn-outline-secondary">
+          Delete portfolio
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @portfolio.user_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@portfolio.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@portfolio.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit portfolio
+    </h2>
+
+    <form action="/modify_portfolio/<%= @portfolio.id %>"  method="post" >
+      <div class="form-group">
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="user_id_from_query" class="form-control" value="<%= @portfolio.user_id %>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update portfolio
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
