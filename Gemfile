@@ -3,7 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
-gem 'google-finance-ruby-client'
+gem 'iex-ruby-client'
+
 
 gem 'activeadmin', '2.2.0'
 gem 'bcrypt'
